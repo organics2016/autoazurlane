@@ -51,7 +51,7 @@ def main():
     # exercise(10)
     # difficulty(3)
 
-    again(2)
+    again(200)
 
 
 if __name__ == '__main__':

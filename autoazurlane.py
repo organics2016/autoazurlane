@@ -1,5 +1,8 @@
 from click import ClickText, ClickWindow
 
+click_text = ClickText()
+click_window = ClickWindow()
+
 
 def test(info: str):
 
@@ -8,26 +11,42 @@ def test(info: str):
     #     print(again)
     #     time.sleep(2)
 
-    c = ClickText()
-    while True:
-        print(c.get_point(info))
-    # ClickText().click('演习')
+    click_window.click('碧蓝航线 - MuMu模拟器', -1)
 
 
 def exercise(count: int):
 
+    click_text.click('出击')
+    click_text.click('演习')
+
     for num in range(count):
-        ClickText().click('演习', 1, 0, 200)
-        ClickText().click('开始演习')
-        ClickText().click('出击')
-        ClickWindow().click('碧蓝航线 - MuMu模拟器', -1, 0, 0, 2, ClickText(), '确定')
-        ClickText().click('确定')
-        ClickText().click('点击关闭', -1, 0, 0, 2, ClickText(), '演习')
+        click_text.click('演习', 1, 0, 200)
+        click_text.click('开始演习')
+        click_text.click('出击')
+        click_window.click('碧蓝航线 - MuMu模拟器', -1, 0, 0, 2, click_text, '确定')
+        click_text.click('确定')
+        click_text.click('点击关闭', -1, 0, 0, 2, click_text, '演习')
+
+
+def difficulty(count: int):
+
+    click_text.click('出击')
+    click_text.click('主线')
+    click_text.click('7-2短兵相接')
+    click_text.click('立刻前往', 2)
+
+    for num in range(count):
+        click_window.click('碧蓝航线 - MuMu模拟器', -1, 0, 0, 2, click_text, '再次前往')
+        click_text.click('再次前往')
 
 
 def main():
     print("starting......")
-    exercise(10)
+
+    # exercise(10)
+    # difficulty(3)
+
+    test('dd')
 
 
 if __name__ == '__main__':

@@ -74,7 +74,7 @@ class ClickWindow(ClickWork):
         w = rect[2] - x
         h = rect[3] - y
 
-        return pyautogui.Point(w/2+x, h/3+y)
+        return pyautogui.Point(w / 2 + x, (h / 4) * 3 + y)
 
 
 class ClickText(ClickWork):
@@ -95,6 +95,6 @@ class ClickText(ClickWork):
                 y = coordinate[0][1]
                 w = coordinate[1][0] - x
                 h = coordinate[3][1] - y
-                return pyautogui.Point(w/2+x, h/2+y)
+                return pyautogui.Point(w / 2 + x, h / 2 + y)
 
         return None

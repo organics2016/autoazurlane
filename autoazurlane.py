@@ -35,6 +35,11 @@ def difficulty(count: int):
     click_text.click('7-2短兵相接')
     click_text.click('立刻前往', 2)
 
+    again(count)
+
+
+def again(count: int):
+
     for num in range(count):
         click_window.click('碧蓝航线 - MuMu模拟器', -1, 0, 0, 2, click_text, '再次前往')
         click_text.click('再次前往')
@@ -46,7 +51,7 @@ def main():
     # exercise(10)
     # difficulty(3)
 
-    test('dd')
+    again(2)
 
 
 if __name__ == '__main__':

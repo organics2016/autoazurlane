@@ -3,11 +3,14 @@ import time
 import win32gui
 import easyocr
 import numpy
+import re
 
 from abc import ABCMeta, abstractmethod
 
 # 开启失败保护
 pyautogui.FAILSAFE = True
+# init OCR
+reader = easyocr.Reader(['ch_sim'], gpu=True)
 
 
 class ClickWork(metaclass=ABCMeta):
@@ -84,7 +87,6 @@ class ClickText(ClickWork):
         screenshot = pyautogui.screenshot()
         img_byte = numpy.asarray(screenshot)
 
-        reader = easyocr.Reader(['ch_sim'], gpu=True)
         ocr_result = reader.readtext(img_byte)
 
         for res in ocr_result:
@@ -96,5 +98,19 @@ class ClickText(ClickWork):
                 w = coordinate[1][0] - x
                 h = coordinate[3][1] - y
                 return pyautogui.Point(w / 2 + x, h / 2 + y)
+
+        return None
+
+    def search(self, pattern: str) -> str:
+
+        screenshot = pyautogui.screenshot()
+        img_byte = numpy.asarray(screenshot)
+
+        ocr_result = reader.readtext(img_byte)
+
+        for res in ocr_result:
+            print(res)
+            if re.search(pattern, res[1], re.M) is not None:
+                return res[1]
 
         return None

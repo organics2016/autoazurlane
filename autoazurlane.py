@@ -1,40 +1,38 @@
-from ctypes.wintypes import BOOL
-from click import ClickText, ClickWindow
+from click import TextClick, WindowClick, ImgClick
 
-click_text = ClickText()
-click_window = ClickWindow()
+# 文本点击
+text_click = TextClick()
+# 窗口点击
+window_click = WindowClick()
+# 图片点击
+img_click = ImgClick()
 
 
 def test(info: str):
 
-    # while True:
-    #     again = pyautogui.locateCenterOnScreen(img)
-    #     print(again)
-    #     time.sleep(2)
-
-    click_window.click('碧蓝航线 - MuMu模拟器', -1)
+    window_click.click('碧蓝航线 - MuMu模拟器', -1)
 
 
 def exercise(count: int):
 
-    click_text.click('出击')
-    click_text.click('演习')
+    text_click.click('出击')
+    text_click.click('演习')
 
     for num in range(count):
-        click_text.click('演习', 1, 0, 200)
-        click_text.click('开始演习')
-        click_text.click('出击')
-        click_window.click('碧蓝航线 - MuMu模拟器', -1, 0, 0, 2, click_text, '确定')
-        click_text.click('确定')
-        click_text.click('点击关闭', -1, 0, 0, 2, click_text, '演习')
+        text_click.click('演习', 1, 0, 200)
+        text_click.click('开始演习')
+        text_click.click('出击')
+        window_click.click('碧蓝航线 - MuMu模拟器', -1, 0, 0, 2, text_click, '确定')
+        text_click.click('确定')
+        text_click.click('点击关闭', -1, 0, 0, 2, text_click, '演习')
 
 
 def main_battle(battle_chapter: int, battle_name: str, highLevel: bool, count: int):
 
-    click_text.click('出击')
-    click_text.click('主线')
+    text_click.click('出击')
+    text_click.click('主线')
 
-    chapter: str = click_text.search('^第\\d+章$')
+    chapter: str = text_click.search('^第\\d+章$')
 
     if chapter is None:
         raise Exception('无法定位当前主线章节')
@@ -43,21 +41,21 @@ def main_battle(battle_chapter: int, battle_name: str, highLevel: bool, count: i
     while battle_chapter != current_chapter:
 
         if battle_chapter < current_chapter:
-            click_text.click('上一章')
+            text_click.click('上一章')
             current_chapter = current_chapter - 1
         else:
-            click_text.click('下一章')
+            text_click.click('下一章')
             current_chapter = current_chapter + 1
 
     if highLevel:
-        if click_text.get_point('困难') is not None:
-            click_text.click('困难')
+        if text_click.get_point('困难') is not None:
+            text_click.click('困难')
     else:
-        if click_text.get_point('普通') is not None:
-            click_text.click('普通')
+        if text_click.get_point('普通') is not None:
+            text_click.click('普通')
 
-    click_text.click(battle_name)
-    click_text.click('立刻前往', 2)
+    text_click.click(battle_name)
+    text_click.click('立刻前往', 2)
 
     again(count)
 
@@ -65,8 +63,8 @@ def main_battle(battle_chapter: int, battle_name: str, highLevel: bool, count: i
 def again(count: int):
 
     for num in range(count):
-        click_window.click('碧蓝航线 - MuMu模拟器', -1, 0, 0, 2, click_text, '再次前往')
-        click_text.click('再次前往')
+        window_click.click('碧蓝航线 - MuMu模拟器', -1, 0, 0, 2, text_click, '再次前往')
+        text_click.click('再次前往')
 
 
 def main():

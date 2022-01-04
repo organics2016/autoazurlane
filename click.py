@@ -58,12 +58,12 @@ class ClickWork(metaclass=ABCMeta):
         print(f"执行完毕:{get_point_info}")
 
 
-class ClickImg(ClickWork):
+class ImgClick(ClickWork):
     def get_point(self, get_point_info) -> pyautogui.Point:
         return pyautogui.locateCenterOnScreen(get_point_info)
 
 
-class ClickWindow(ClickWork):
+class WindowClick(ClickWork):
 
     def get_point(self, get_point_info) -> pyautogui.Point:
 
@@ -80,7 +80,7 @@ class ClickWindow(ClickWork):
         return pyautogui.Point(w / 2 + x, (h / 5) * 4 + y)
 
 
-class ClickText(ClickWork):
+class TextClick(ClickWork):
 
     def get_point(self, get_point_info) -> pyautogui.Point:
 

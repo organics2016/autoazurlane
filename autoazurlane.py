@@ -49,10 +49,10 @@ def main_battle(battle_chapter: int, battle_name: str, highLevel: bool, count: i
     while battle_chapter != current_chapter:
 
         if battle_chapter < current_chapter:
-            text_click.click('上一章')
+            text_click.click('上一章', 1, 0, -80)
             current_chapter = current_chapter - 1
         else:
-            text_click.click('下一章')
+            text_click.click('下一章', 1, 0, -80)
             current_chapter = current_chapter + 1
 
     if highLevel:

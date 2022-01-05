@@ -7,10 +7,18 @@ window_click = WindowClick()
 # 图片点击
 img_click = ImgClick()
 
+# 点击指定窗口 宽50% 高80%  无意义点击，用于战斗结束后的结算页面
+w_click_info = type('', (), {'window_name': '碧蓝航线 - MuMu模拟器',
+                             'w_coefficient': 0.5, 'h_coefficient': 0.8})()
 
-def test(info: str):
+# 返回按钮
+w_click_esc = type('', (), {'window_name': '碧蓝航线 - MuMu模拟器',
+                            'w_coefficient': 0.045, 'h_coefficient': 0.105})()
 
-    window_click.click('碧蓝航线 - MuMu模拟器', -1)
+
+def test():
+
+    window_click.click(w_click_esc, -1)
 
 
 def exercise(count: int):
@@ -22,7 +30,7 @@ def exercise(count: int):
         text_click.click('演习', 1, 0, 200)
         text_click.click('开始演习')
         text_click.click('出击')
-        window_click.click('碧蓝航线 - MuMu模拟器', -1, 0, 0, 2, text_click, '确定')
+        window_click.click(w_click_info, -1, 0, 0, 2, text_click, '确定')
         text_click.click('确定')
         text_click.click('点击关闭', -1, 0, 0, 2, text_click, '演习')
 
@@ -63,14 +71,18 @@ def main_battle(battle_chapter: int, battle_name: str, highLevel: bool, count: i
 def again(count: int):
 
     for num in range(count):
-        window_click.click('碧蓝航线 - MuMu模拟器', -1, 0, 0, 2, text_click, '再次前往')
+        window_click.click(w_click_info, -1, 0, 0, 2, text_click, '再次前往')
         text_click.click('再次前往')
 
 
 def main():
     print("starting......")
 
-    # exercise(10)
+    # test()
+
+    exercise(10)
+
+    window_click.click(w_click_esc, 2)
 
     main_battle(7, '7-2短兵相接', True, 3)
 

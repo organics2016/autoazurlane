@@ -67,7 +67,7 @@ class WindowClick(ClickWork):
 
     def get_point(self, get_point_info) -> pyautogui.Point:
 
-        window = win32gui.FindWindow(None, get_point_info)
+        window = win32gui.FindWindow(None, get_point_info.window_name)
         if window is None:
             return None
 
@@ -77,7 +77,19 @@ class WindowClick(ClickWork):
         w = rect[2] - x
         h = rect[3] - y
 
-        return pyautogui.Point(w / 2 + x, (h / 5) * 4 + y)
+        w_coefficient = get_point_info.w_coefficient
+        if w_coefficient > 1:
+            w_coefficient = 1
+        elif w_coefficient < 0:
+            w_coefficient = 0
+
+        h_coefficient = get_point_info.h_coefficient
+        if h_coefficient > 1:
+            h_coefficient = 1
+        elif h_coefficient < 0:
+            h_coefficient = 0
+
+        return pyautogui.Point(w * w_coefficient + x, h * h_coefficient + y)
 
 
 class TextClick(ClickWork):

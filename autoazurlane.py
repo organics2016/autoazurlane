@@ -16,6 +16,10 @@ w_click_esc = type('', (), {'window_name': '碧蓝航线 - MuMu模拟器',
                             'w_coefficient': 0.045, 'h_coefficient': 0.105})()
 
 
+w_click_start_exercise = type('', (), {'window_name': '碧蓝航线 - MuMu模拟器',
+                                       'w_coefficient': 0.5, 'h_coefficient': 0.75})()
+
+
 def test():
 
     window_click.click(w_click_esc, -1)
@@ -28,7 +32,8 @@ def exercise(count: int):
 
     for num in range(count):
         text_click.click('演习', 1, 0, 200)
-        text_click.click('开始演习')
+        # text_click.click('开始演习')
+        window_click.click(w_click_start_exercise)
         text_click.click('出击')
         window_click.click(w_click_info, -1, 0, 0, 2, text_click, '确定')
         text_click.click('确定')

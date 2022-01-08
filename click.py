@@ -60,7 +60,7 @@ class ClickWork(metaclass=ABCMeta):
 
 class ImgClick(ClickWork):
     def get_point(self, get_point_info) -> pyautogui.Point:
-        return pyautogui.locateCenterOnScreen(get_point_info)
+        return pyautogui.locateCenterOnScreen(get_point_info, confidence=0.5)
 
 
 class WindowClick(ClickWork):

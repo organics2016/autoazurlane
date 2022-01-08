@@ -16,13 +16,14 @@ w_click_esc = type('', (), {'window_name': '碧蓝航线 - MuMu模拟器',
                             'w_coefficient': 0.045, 'h_coefficient': 0.105})()
 
 
+# 开始演习坐标
 w_click_start_exercise = type('', (), {'window_name': '碧蓝航线 - MuMu模拟器',
                                        'w_coefficient': 0.5, 'h_coefficient': 0.75})()
 
 
 def test():
 
-    window_click.click(w_click_esc, -1)
+    img_click.click('img/back.png', -1)
 
 
 def exercise(count: int):
@@ -83,11 +84,12 @@ def again(count: int):
 def main():
     print("starting......")
 
-    # test()
+    test()
 
     exercise(10)
 
-    window_click.click(w_click_esc, 2)
+    # window_click.click(w_click_esc, 2)
+    img_click.click('img/back.png', 2)
 
     main_battle(7, '7-2短兵相接', True, 3)
 

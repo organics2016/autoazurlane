@@ -84,7 +84,7 @@ def again(count: int):
 def main():
     print("starting......")
 
-    test()
+    # test()
 
     exercise(10)
 

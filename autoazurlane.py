@@ -26,10 +26,21 @@ def test():
     img_click.click('img/back.png', -1)
 
 
-def exercise(count: int):
+def exercise():
 
     text_click.click('出击')
     text_click.click('演习')
+
+    count_str: str = text_click.search('^\\d+/\\d+$')
+    if count_str is None:
+        raise Exception('无法定位当前演习次数')
+
+    count: int = 0
+    count_str = count_str.split('/')[0]
+    if count_str != '0':
+        count = int(count_str.lstrip('0'))
+
+    print(f"当前演习次数: {count}")
 
     for num in range(count):
         text_click.click('演习', 1, 0, 200)
@@ -86,12 +97,12 @@ def main():
 
     # test()
 
-    exercise(10)
+    exercise()
 
     # window_click.click(w_click_esc, 2)
     img_click.click('img/back.png', 2)
 
-    main_battle(7, '7-2短兵相接', True, 3)
+    main_battle(7, '7-2 短兵相接', True, 3)
 
     # again(200)
 

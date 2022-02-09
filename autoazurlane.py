@@ -102,7 +102,7 @@ def main():
     # window_click.click(w_click_esc, 2)
     img_click.click('img/back.png', 2)
 
-    main_battle(7, '7-2 短兵相接', True, 3)
+    main_battle(9, '9-3 黑夜中的光芒', True, 3)
 
     # again(200)
 
